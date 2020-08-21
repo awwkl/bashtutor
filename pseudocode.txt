@@ -1,0 +1,63 @@
+<main.c>    // start_program, program loop, exit_program
+<start.c>   // welcome message, show chapters, prompt_jump
+<exit.c>    // exit message
+<explain.c> // explain, next, previous, jump, print_progress
+<input.c>   // get, parse, [intercept], execute
+<misc.c>    // print_help, exit
+
+<<main.c>>
+main()
+    start_program()
+    while (get_parse_execute());
+    exit_program();
+
+<<start.c>>
+start_program()
+    print welcome message
+    print_chapters()
+    prompt_jump() to specified chapter, else defaults to chapter 1
+
+<<exit.c>>
+    print exit message
+
+<<explain.c>
+    `progress` counter variable to track progress
+    advance progress based on user actions (or on receiving "next")
+    jump to different points by changing progress variable 
+
+explain()
+    print explanation based on progress
+
+jump()
+    "jump 3" will jump to chapter 3
+    "jump 209" will jump to 10th text in chapter 2
+    set progress = xxx
+    explain
+
+next()
+    progress++
+    explain
+
+previous()
+    progress--
+    explain
+
+print_chapters()
+
+<!-- 
+print_progress() should just print the progress number e.g. 209
+ -->
+
+<<input.c>>
+get_parse_execute()
+    read user input into `command`
+    intercept to check for bashtutor commands
+    system(command)
+
+<<misc.c>>
+exit()
+    print exit message
+    exit program
+
+print_help()
+    print help information
