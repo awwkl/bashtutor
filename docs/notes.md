@@ -1,3 +1,9 @@
+--- TO-DO ---
+signal handling of Ctrl-C, etc
+make in-file functions static? does this make it faster?
+error-checking
+-------------
+
 Below is the structure for containing information text for explanations
 
 <<directory structure>>
@@ -25,3 +31,4 @@ char *chapter_02[] = {
     - list files\n \
     - multiple options\n"
 };
+

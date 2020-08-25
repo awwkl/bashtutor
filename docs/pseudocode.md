@@ -16,9 +16,29 @@ start_program()
     print welcome message
     print_chapters()
     prompt_jump() to specified chapter, else defaults to chapter 1
+    print first info text
+
+<<input.c>>
+get_parse_execute()
+    return (get_input() &&
+            parse_input() &&
+            exec_input())
+
+get_input()
+    print prompt "bashtutor> "
+    read user input into static global char `input[4096]`
+
+parse_input()
+    strtok into static char *command[64]
+
+exec_input()
+    intercept to check for bashtutor commands
+    intercept to check for bash built-ins like "cd"
+    system(command) // performs fork(), execl(), waitpid() 
 
 <<exit.c>>
     print exit message
+    exit program
 
 <<explain.c>
     `progress` counter variable to track progress
@@ -48,16 +68,6 @@ print_chapters()
 print_progress() should just print the progress number e.g. 209
  -->
 
-<<input.c>>
-get_parse_execute()
-    read user input into `command`
-    intercept to check for bashtutor commands
-    system(command)
-
 <<misc.c>>
-exit()
-    print exit message
-    exit program
-
 print_help()
     print help information
