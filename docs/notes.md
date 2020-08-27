@@ -1,4 +1,5 @@
 --- TO-DO ---
+arrow keys to move up and down
 signal handling of Ctrl-C, etc
 make in-file functions static? does this make it faster?
 error-checking

@@ -1,6 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <stdbool.h>
+
+#include "explain.h"
 
 #define INPUT_SIZE 1024
 static char input[INPUT_SIZE + 1];
@@ -33,7 +36,7 @@ int get_input()
 
     strcpy(input_copy, input);
 
-    return 1;
+    return true;
 }
 
 int parse_input()
@@ -52,28 +55,37 @@ int parse_input()
         parsed = strtok(NULL, delim);
     }
 
-    return 1;
+    return true;
 }
 
 int exec_input()
 {
     if (strcmp(command[0], "@exit") == 0) {
-        return 0;
+        return false;
     }
     if (strcmp(command[0], "@explain") == 0) {
-        printf("Explain current info\n\n");
-        return 1;
+        explain();
+        return true;
     }
     if (strcmp(command[0], "@next") == 0) {
-        printf("Explain next info\n\n");
-        return 1;
+        jump_next();
+        explain();
+        return true;
     }
     if (strcmp(command[0], "@previous") == 0) {
-        printf("Explain previous info\n\n");
-        return 1;
+        jump_previous();
+        explain();
+        return true;
+    }
+    if (strcmp(command[0], "@jump") == 0) {
+        if (jump_progress(atoi(command[1]))) {
+            explain();
+        }
+        
+        return true;
     }
 
     system(input);
 
-    return 1;
+    return true;
 }

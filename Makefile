@@ -1,6 +1,10 @@
 all: bashtutor
 
-c = src/*.c
+c = src/*.c src/*/*.c
+h = src/*.h src/*/*.h
 
-bashtutor: $(c)
-	clang -Wall $(c) -o $@
+CC = clang
+CFLAGS = -Wall -Wextra -pedantic
+
+bashtutor: $(c) $(h)
+	$(CC) $(CFLAGS) $(c) -o $@
