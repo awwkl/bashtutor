@@ -1,0 +1,43 @@
+--- TODO ---
+portability
+    makefile uses cc compiler currently
+error-checking
+    for debugging
+    useful error messages for users
+keyboard support
+    arrow keys to move up and down
+    signal handling of Ctrl-C, etc (need to make decisions re this)
+extensibility of chapters
+    sizeof() operator to determine sizes of chapter arrays
+optimizations and compilation optimizations 
+    turn static functions into inline? does it make it faster?
+-------------
+
+Below is the structure for containing information text for explanations
+
+<<directory structure>>
+bashtutor.c
+Makefile
+info/chapter1.h
+    /chapter2.h
+        extern char *chapter2[]
+    /chapter3.h
+
+    /chapter1.c
+    /chapter2.c
+        char *chapter2[] = {"one" , "two", "threee"};
+    /chapter3.c
+
+<<info/chapter2.h>>
+extern char *chapter2[];
+
+<info/chapter2.c>
+char *chapter2[] = {
+"(200) first one\n",
+
+"(201) The \"ls\" command is greatly useful for a few things: \n \
+    - list directories\n \
+    - list files\n \
+    - multiple options\n"
+};
+

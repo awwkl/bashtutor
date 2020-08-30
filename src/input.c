@@ -4,6 +4,7 @@
 #include <stdbool.h>
 
 #include "explain.h"
+#include "misc.h"
 
 #define INPUT_SIZE 1024
 static char input[INPUT_SIZE + 1];
@@ -27,7 +28,7 @@ int get_input()
 {
     int len;
 
-    printf("bashtutor> ");
+    printf("%s%s %s", "\033[1;31m", "bashtutor>", "\033[0m");
 
     fgets(input, INPUT_SIZE, stdin);
     len = strlen(input);
@@ -60,6 +61,10 @@ int parse_input()
 
 int exec_input()
 {
+    if (strcmp(command[0], "@help") == 0) {
+        print_help();
+        return true;
+    }
     if (strcmp(command[0], "@exit") == 0) {
         return false;
     }
