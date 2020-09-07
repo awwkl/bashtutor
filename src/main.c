@@ -7,7 +7,7 @@
 int main()
 {
     start_program();
-    
+
     while (get_parse_execute());
 
     exit_program();

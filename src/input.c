@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdbool.h>
+#include <readline/readline.h>
+#include <readline/history.h>
 
 #include "explain.h"
 #include "misc.h"
@@ -26,15 +28,20 @@ int get_parse_execute()
 
 int get_input()
 {
-    int len;
+    // int len;
 
-    printf("%s%s %s", "\033[1;31m", "bashtutor>", "\033[0m");
+    // printf("%s%s %s", "\033[1;31m", "bashtutor>", "\033[0m");
 
-    fgets(input, INPUT_SIZE, stdin);
-    len = strlen(input);
-    if (len > 0 && input[len - 1] == '\n')
-        input[len - 1] = '\0';
+    // fgets(input, INPUT_SIZE, stdin);
+    // len = strlen(input);
+    // if (len > 0 && input[len - 1] == '\n')
+    //     input[len - 1] = '\0';
 
+    char *tmp;
+    
+    tmp = readline("\033[1;31mbashtutor>\033[0m ");
+    
+    strcpy(input, tmp);
     strcpy(input_copy, input);
 
     return true;

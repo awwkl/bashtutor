@@ -1,16 +1,21 @@
 --- TODO ---
-portability
-    makefile uses cc compiler currently
-error-checking
-    for debugging
-    useful error messages for users
+features
+    cd and other builtins
 keyboard support
     arrow keys to move up and down
     signal handling of Ctrl-C, etc (need to make decisions re this)
+portability
+    makefile uses cc compiler currently
+    statically link glibc
+error-checking
+    for debugging
+    useful error messages for users
 extensibility of chapters
     sizeof() operator to determine sizes of chapter arrays
 optimizations and compilation optimizations 
     turn static functions into inline? does it make it faster?
+OTHERS
+    const keyword for function arguments and return values
 -------------
 
 Below is the structure for containing information text for explanations
