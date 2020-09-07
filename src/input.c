@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
 #include <string.h>
 #include <stdbool.h>
 #include <readline/readline.h>
@@ -14,6 +15,7 @@ static char input_copy[INPUT_SIZE + 1];
 
 #define ARG_COUNT 16
 static char *command[ARG_COUNT];
+static int arg_index;
 
 int get_input();
 int parse_input();
@@ -28,19 +30,15 @@ int get_parse_execute()
 
 int get_input()
 {
-    // int len;
+    static char *tmp;
+    static char wd[1024];
+    static char prompt[1024];
 
-    // printf("%s%s %s", "\033[1;31m", "bashtutor>", "\033[0m");
+    getcwd(wd, 1024);
+    snprintf(prompt, 1024, "%s%s%s%s%s%s", "\033[1;31m", "bashtutor",
+                           "\033[0m:", "\033[1;32m", wd, ">\033[0m ");
+    tmp = readline(prompt);
 
-    // fgets(input, INPUT_SIZE, stdin);
-    // len = strlen(input);
-    // if (len > 0 && input[len - 1] == '\n')
-    //     input[len - 1] = '\0';
-
-    char *tmp;
-    
-    tmp = readline("\033[1;31mbashtutor>\033[0m ");
-    
     strcpy(input, tmp);
     strcpy(input_copy, input);
 
@@ -50,15 +48,14 @@ int get_input()
 int parse_input()
 {
     char *parsed, *delim;
-    int index;
 
-    index = 0;
+    arg_index = 0;
     delim = " ";
 
     parsed = strtok(input_copy, delim);
     while (parsed != NULL) {
-        command[index] = parsed;
-        index++;
+        command[arg_index] = parsed;
+        arg_index++;
 
         parsed = strtok(NULL, delim);
     }
@@ -94,6 +91,17 @@ int exec_input()
             explain();
         }
         
+        return true;
+    }
+
+    if (strcmp(command[0], "cd") == 0) {
+        if (arg_index > 2) {
+            printf("cd: too many arguments\n");
+            return true;
+        }
+
+        if (chdir(command[1]) == -1)
+            perror("cd");
         return true;
     }
 
