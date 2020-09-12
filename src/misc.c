@@ -2,9 +2,12 @@
 #include <stdlib.h>
 
 #include "misc.h"
+#include "explain.h"
 
 void start_program()
 {
+    load_chapters();
+
     print_welcome();
     print_chapters();
     print_help();

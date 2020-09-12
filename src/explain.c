@@ -3,9 +3,21 @@
 
 #include "info/chapters.h"
 
+#define NUM_CHAPTERS 3
+
 static int progress = 100;
-static int chapter_ends[4] = {100, 102, 204, 303};
-static int last_info = 303;
+static int chapter_ends[NUM_CHAPTERS + 1];
+static int last_info;
+
+void load_chapters()
+{
+    chapter_ends[0] = 100;
+    chapter_ends[1] = chapter1_end;
+    chapter_ends[2] = chapter2_end;
+    chapter_ends[3] = chapter3_end;
+
+    last_info = chapter_ends[NUM_CHAPTERS];
+}
 
 void explain()
 {
