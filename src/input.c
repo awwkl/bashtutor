@@ -65,31 +65,30 @@ int parse_input()
 
 int exec_input()
 {
-    if (strcmp(command[0], "@help") == 0) {
+    if (strcmp(command[0], "@help") == 0 || strcmp(command[0], "@h") == 0) {
         print_help();
         return true;
     }
-    if (strcmp(command[0], "@exit") == 0) {
+    if (strcmp(command[0], "@quit") == 0 || strcmp(command[0], "@q") == 0) {
         return false;
     }
-    if (strcmp(command[0], "@explain") == 0) {
+    if (strcmp(command[0], "@explain") == 0 || strcmp(command[0], "@e") == 0) {
         explain();
         return true;
     }
-    if (strcmp(command[0], "@next") == 0) {
+    if (strcmp(command[0], "@next") == 0 || strcmp(command[0], "@n") == 0) {
         jump_next();
         explain();
         return true;
     }
-    if (strcmp(command[0], "@previous") == 0) {
+    if (strcmp(command[0], "@previous") == 0 || strcmp(command[0], "@p") == 0) {
         jump_previous();
         explain();
         return true;
     }
-    if (strcmp(command[0], "@jump") == 0) {
-        if (jump_progress(atoi(command[1]))) {
+    if (strcmp(command[0], "@jump") == 0 || strcmp(command[0], "@j") == 0) {
+        if (jump_progress(atoi(command[1])))
             explain();
-        }
         
         return true;
     }
