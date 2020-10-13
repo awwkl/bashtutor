@@ -40,14 +40,14 @@ Bash commands. You can now learn Bash without leaving the terminal. Enjoy!  \n\
 
 void print_chapters()
 {
-    printf("                                \n\
-Chapter List                                \n\
-------------                                \n\
-1) Basic Terminal Keyboard Shortcuts        \n\
-2) File and Directory Commands              \n\
-3) Special Characters                       \n\
-------------                                \n\
-Enter \"@jump N\" to jump to Chapter N      \n\
+    printf("                                        \n\
+Chapter List                                        \n\
+------------                                        \n\
+1) Basic Terminal Keyboard Shortcuts                \n\
+2) File and Directory Commands                      \n\
+3) Special Characters                               \n\
+------------                                        \n\
+Enter \"@j N\" or \"@jump N\" to jump to Chapter N  \n\
 ");
 }
 
