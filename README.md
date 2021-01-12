@@ -8,10 +8,10 @@
 This program is currently a work-in-progress.
 
 ### Objectives of bashtutor
-- learn Bash directly within the terminal, without needing to have a browser or book open
-- jump between different lessons easily
-- includes explanations of different commands
-- includes practices to try out the commands
+- Learn Bash directly within the terminal, without needing to have a browser or book open
+- Jump between different lessons easily
+- Include explanations of different commands
+- Include practices to try out the commands
 
 ### Installation
 You can install the package with:
@@ -27,6 +27,6 @@ You can run the program located in your current direcotry with:
 ```
 
 ### Additional notes
-- written in C
-- simulates a command shell
-- allows the use of keyboard shortcuts like Ctrl-L, Ctrl-W, Ctrl-U, Ctrl-A, etc
+- Written in C
+- Simulates a command shell
+- Allows the use of keyboard shortcuts like Ctrl-L, Ctrl-W, Ctrl-U, Ctrl-A, etc
